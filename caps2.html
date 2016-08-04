@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+	
+		html,body{
+			margin:0;
+			padding:0;
+		}
+		#capsMaker{
+			
+			width:900px;
+			margin:20px auto;
+		}
+		.capsFrame,.capsText,.settingFrame{
+			width:100%;
+
+		}
+		.capsFrame{
+			position:relative;
+		}
+		.imgFrame img{
+			width:100%;
+		}
+		.capsText{
+			background:red;
+			color:white;
+			padding:10px;
+			width:calc(100% - 20px);
+			position:absolute;
+			bottom:0;
+		}
+		.capsText p{
+			margin:0;
+		}
+		.settingFrame input{
+			padding:10px 20px;
+			width:calc(100% - 42px);
+			border:1px solid red;
+			margin:10px 0px;
+		}
+		.settingFrame input:focus{
+			background:lightgray;
+			color:black;
+		}
+		.settingFrame button{
+			cursor:pointer;
+			border:none;
+			background:red;
+			color:white;
+			padding:5px 10px;
+		}
+		
+	</style>
+</head>
+<body>
+	
+	<script type="text/javascript">
+//CREATING STRUCTURE
+		document.getElementsByTagName("body")[0].appendChild(document.createElement("div")).setAttribute("id","capsMaker");
+		document.getElementById("capsMaker").appendChild(document.createElement("div")).setAttribute("class","capsFrame");
+		document.getElementById("capsMaker").appendChild(document.createElement("div")).setAttribute("class","settingFrame");
+//FILLING .CAPSFRAME DIV	
+		document.getElementsByClassName("capsFrame")[0].appendChild(document.createElement("div")).setAttribute("class","imgFrame");
+			document.getElementsByClassName("imgFrame")[0].appendChild(document.createElement("img")).setAttribute("src","images/01.jpg");
+		document.getElementsByClassName("capsFrame")[0].appendChild(document.createElement("div")).setAttribute("class","capsText");
+			document.getElementsByClassName("capsText")[0].appendChild(document.createElement("p"));
+				document.getElementsByTagName("p")[0].innerHTML="Lorem ipsum falan filan";
+//FILLING .SETTINGFRAME DIV
+		
+		//CREATING FIRST INPUT AND ITS BUTTON
+		document.getElementsByClassName("settingFrame")[0].appendChild(document.createElement("input"));
+			document.getElementsByTagName("input")[0].type="text";
+			document.getElementsByTagName("input")[0].placeholder="Sekil linki";
+		document.getElementsByClassName("settingFrame")[0].appendChild(document.createElement("button")).setAttribute("onclick","addImage()");
+			document.getElementsByTagName("button")[0].innerHTML="ADD IMAGE";
+		
+		//CREATING SECOND INPUT AND ITS BUTTON
+		document.getElementsByClassName("settingFrame")[0].appendChild(document.createElement("input"));
+			document.getElementsByTagName("input")[1].type="text";
+			document.getElementsByTagName("input")[1].placeholder="Sekil texti";
+		document.getElementsByClassName("settingFrame")[0].appendChild(document.createElement("button")).setAttribute("onclick","addText()");
+			document.getElementsByTagName("button")[1].style.display="block";
+			document.getElementsByTagName("button")[1].innerHTML="ADD TEXT";
+		
+		
+		//CREATING SPECIAL FUNCTION BUTTONS
+		document.getElementsByClassName("settingFrame")[0].appendChild(document.createElement("button")).setAttribute("onclick","changeImageBorder()");
+			document.getElementsByTagName("button")[2].innerHTML="Change image border";
+		document.getElementsByClassName("settingFrame")[0].appendChild(document.createElement("button")).setAttribute("onclick","changeTextBackgroundAndColor()");
+			document.getElementsByTagName("button")[3].innerHTML="Change text background and color";
+		document.getElementsByClassName("settingFrame")[0].appendChild(document.createElement("button")).setAttribute("onclick","changeTextPositionToTop()");
+			document.getElementsByTagName("button")[4].innerHTML="Change text position to top";
+
+//FUNCTIONS
+		
+		var addImage =function(){
+
+			var capsImg=document.getElementsByTagName("input")[0].value;
+			if(capsImg==""){
+				alert("Sekil yoxdur")
+			}else{
+				console.log(capsImg)
+				document.getElementsByClassName("imgFrame")[0].getElementsByTagName("img")[0].src="images/"+capsImg;
+			}
+			
+			
+		}
+
+		function addText(){
+			var capsText=document.getElementsByTagName("input")[1].value;
+			document.getElementsByClassName("capsText")[0].innerHTML="<p>"+capsText+"</p>"
+		}
+		
+		function changeImageBorder(){
+			document.getElementsByClassName("capsFrame")[0].style.border="5px solid red";
+		}
+		
+		function changeTextBackgroundAndColor(){
+			document.getElementsByClassName("capsText")[0].style.backgroundColor="black";
+			document.getElementsByClassName("capsText")[0].style.color="red";
+		}
+		
+		function changeTextPositionToTop(){
+			document.getElementsByClassName("capsText")[0].style.top="0";
+			document.getElementsByClassName("capsText")[0].style.bottom="auto";
+		}
+	</script>
+</body>
+</html>
